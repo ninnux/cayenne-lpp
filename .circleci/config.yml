@@ -19,3 +19,15 @@ jobs:
       - store_artifacts:
           path: doc/html
           destination: doc
+
+nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+                - nightly
+    jobs:
+      - build
